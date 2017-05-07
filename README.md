@@ -1,4 +1,4 @@
-# python-touch-id
+# python-touch-id [![PEP8](https://img.shields.io/badge/PEP8-compliant-brightgreen.svg)](https://www.python.org/dev/peps/pep-0008/)
 
 > Access the Touch ID sensor from Python
 
