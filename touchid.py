@@ -57,8 +57,3 @@ def authenticate(reason='authenticate via Touch ID'):
         raise Exception(res['error'])
 
     return res['success']
-
-
-if __name__ == '__main__':
-    print(authenticate())
-
