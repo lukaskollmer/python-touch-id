@@ -9,7 +9,12 @@ import ctypes
 from LocalAuthentication import LAContext, LAPolicyDeviceOwnerAuthenticationWithBiometrics
 
 c = ctypes.cdll.LoadLibrary(None)
-DISPATCH_TIME_FOREVER = sys.maxint
+
+PY3 = sys.version_info[0] >= 3
+if PY3:
+    DISPATCH_TIME_FOREVER = sys.maxsize
+else:
+    DISPATCH_TIME_FOREVER = sys.maxint
 
 dispatch_semaphore_create = c.dispatch_semaphore_create
 dispatch_semaphore_create.restype = ctypes.c_void_p
