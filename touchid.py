@@ -1,6 +1,11 @@
+"""
+A module for accessing the Touch-ID sensor in your Mac's Touch Bar.
+
+Requires pyobjc to be installed
+"""
+
 import sys
 import ctypes
-import objc
 from LocalAuthentication import LAContext, LAPolicyDeviceOwnerAuthenticationWithBiometrics
 
 c = ctypes.cdll.LoadLibrary(None)

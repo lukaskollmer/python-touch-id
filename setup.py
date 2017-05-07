@@ -10,5 +10,6 @@ setup(
     license="MIT",
     author="Lukas Kollmer",
     author_email="lukas.kollmer@gmail.com",
-    url="https://github.com/lukaskollmer/py-touch-id/"
+    url="https://github.com/lukaskollmer/py-touch-id/",
+    install_requires=["pyobjc"]
 )
