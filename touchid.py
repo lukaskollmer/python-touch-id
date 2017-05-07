@@ -1,5 +1,5 @@
 """
-A module for accessing the Touch-ID sensor in your Mac's Touch Bar.
+A module for accessing the Touch ID sensor in your Mac's Touch Bar.
 
 Requires pyobjc to be installed
 """
@@ -23,12 +23,16 @@ dispatch_semaphore_signal = c.dispatch_semaphore_signal
 dispatch_semaphore_signal.restype = ctypes.c_long
 dispatch_semaphore_signal.argtypes = [ctypes.c_void_p]
 
-def authenticate(reason='authenticate via Touch-ID'):
+def is_available():
+    context = LAContext.new()
+    return context.canEvaluatePolicy_error_(LAPolicyDeviceOwnerAuthenticationWithBiometrics, None)[0]
+
+def authenticate(reason='authenticate via Touch ID'):
     context = LAContext.new()
 
     can_evaluate = context.canEvaluatePolicy_error_(LAPolicyDeviceOwnerAuthenticationWithBiometrics, None)[0]
     if not can_evaluate:
-        raise Exception('Touch-ID doesn\'t seem to be available on this machine')
+        raise Exception('Touch ID doesn\'t seem to be available on this machine')
 
     sema = dispatch_semaphore_create(0)
 
@@ -51,7 +55,5 @@ def authenticate(reason='authenticate via Touch-ID'):
 
 
 if __name__ == '__main__':
-
-    s = authenticate('HEY')
-    print(s)
+    print(authenticate())
 
